@@ -33,18 +33,12 @@ const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_IDS;
 //Post to send 
 app.post('/send', async (req, res) => {
     const { message }  = req.body;
-    for (const chatId of TELEGRAM_CHAT_IDS) {
-        try {
-            const response = await axios.post(
-                `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                chat_id: chatId,
-                text: message
-            });
-            console.log("sent");
-        } catch (error) {
-            console.log("Error");
-        }
-    }
+    
+    await axios.post(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        chat_id: TELEGRAM_CHAT_IDS,
+        text: message
+    });
 });
 
 
