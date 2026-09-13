@@ -34,7 +34,7 @@ const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_IDS;
 app.post('/send', async (req, res) => {
     const { message }  = req.body;
     for (const chatId of TELEGRAM_CHAT_IDS) {
-        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
