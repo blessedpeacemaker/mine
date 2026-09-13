@@ -40,9 +40,9 @@ app.post('/send', async (req, res) => {
                 chat_id: chatId,
                 text: message
             });
-            res.json({ success: true });
+            console.log("sent");
         } catch (error) {
-            res.status(500).json({ success: false });
+            console.log("Error");
         }
     }
 });
