@@ -35,17 +35,27 @@ const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_IDS;
 app.post('/send', async (req, res) => {
     const { message }  = req.body;
     
-        const response = await axios.post(
-            `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-            chat_id: TELEGRAM_CHAT_ID,
-            text: message
-        });
-
-        const response = await axios.post(
-            `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-            chat_id: TELEGRAM_CHAT_ID2,
-            text: message
-        });
+  try {
+      const response = await axios.post(
+          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message
+      });
+      res.json({ success: true });
+  } catch (error) {
+      res.status(500).json({ success: false });
+  }
+    
+  try {
+    const response = await axios.post(
+         `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+         chat_id: TELEGRAM_CHAT_ID2,
+         text: message
+     });
+     res.json({ success: true });
+  } catch (error) {
+      res.status(500).json({ success: false });
+  }
 });
 
 
