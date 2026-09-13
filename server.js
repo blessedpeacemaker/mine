@@ -6,6 +6,7 @@ const app = express();
 app.use(express.json());
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_IDS;
 
 //Post to send 
 app.post('/broadcast', async (req, res) => {
